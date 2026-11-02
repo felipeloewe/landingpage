@@ -1,12 +1,14 @@
 /**
- * Cleaner hero: left brand wordmark → compact 10 logos centered under it →
- * headline / copy / CTAs with breathing room; portrait image on the right.
+ * Hero: left column = brand + 10 logos + copy + CTAs.
+ * Right column = visual at exactly 50% (desktop). No text overlap.
+ * Do not restyle approved copy/CTA colors.
  */
 .hero {
   position: relative;
   isolation: isolate;
   min-height: var(--hero-min-height);
   display: grid;
+  grid-template-columns: 1fr;
   align-items: end;
   overflow: hidden;
   color: var(--color-ink);
@@ -15,7 +17,8 @@
 .hero__atmosphere {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
+  pointer-events: none;
   background:
     radial-gradient(ellipse 90% 70% at 70% 20%, var(--hero-wash-a), transparent 60%),
     radial-gradient(ellipse 70% 55% at 15% 75%, var(--hero-wash-b), transparent 55%),
@@ -35,27 +38,28 @@
 }
 
 .hero__media {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  display: grid;
-  place-items: stretch;
+  position: relative;
+  z-index: 1;
+  display: none;
   pointer-events: none;
 }
 
 .hero__media img,
 .hero__media svg {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain;
-  object-position: right center;
+  object-position: center center;
 }
 
 .hero__content {
   position: relative;
-  z-index: 1;
-  width: min(100%, var(--content-max));
-  margin-inline: auto;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding:
     calc(var(--space-2xl) + 2.5rem)
     var(--page-gutter)
@@ -63,9 +67,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0; /* allow wrapping inside grid track */
 }
 
-/* LEFT brand block: wordmark + logos centered under that word */
+/* Brand + 10 logos under wordmark (left column) */
 .hero__identity {
   display: flex;
   flex-direction: column;
@@ -88,17 +93,20 @@
 
 .hero__title {
   margin-top: var(--space-md);
-  max-width: 14ch;
+  max-width: 100%;
   font-family: var(--font-display);
   font-size: var(--text-hero);
   font-weight: 600;
   font-optical-sizing: auto;
   letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .hero__support {
   margin-top: var(--space-md);
-  max-width: 34rem;
+  max-width: 100%;
   font-size: var(--text-lead);
   color: var(--color-ink-muted);
 }
@@ -245,32 +253,50 @@
     font-size: 0.5rem;
   }
 
-  .hero__media img,
-  .hero__media svg {
-    opacity: 0.4;
-    object-position: 85% 20%;
+  .hero__media {
+    display: none;
   }
 }
 
-/* Desktop: left 50% copy; hero visual right 50% (from mid-page), no text overlap */
+/* Desktop: exact 50/50 — content left, hero visual right */
 @media (min-width: 961px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: stretch;
+  }
+
+  .hero__atmosphere {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
   .hero__content {
-    box-sizing: border-box;
-    width: 50%;
-    max-width: 50%;
-    margin-left: 0;
-    margin-right: auto;
-    padding-left: var(--page-gutter);
-    padding-right: var(--space-md);
-    padding-bottom: var(--space-2xl);
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding:
+      calc(var(--space-2xl) + 2.5rem)
+      clamp(1.25rem, 3vw, 2.5rem)
+      var(--space-2xl)
+      var(--page-gutter);
+    justify-content: flex-end;
+    align-self: stretch;
   }
 
   .hero__media {
-    inset: 0 0 0 50%;
-    width: 50%;
+    grid-column: 2;
+    grid-row: 1;
     display: grid;
     place-items: center;
-    padding: 4rem var(--page-gutter) 2rem;
+    width: 100%;
+    height: 100%;
+    min-height: var(--hero-min-height);
+    padding: 4rem clamp(1rem, 3vw, 2.5rem) 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .hero__media img,
@@ -278,9 +304,13 @@
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 100%;
+    max-height: min(78svh, 36rem);
     object-fit: contain;
-    object-position: center center;
     aspect-ratio: 3 / 4;
+  }
+
+  .hero__title,
+  .hero__support {
+    max-width: 100%;
   }
 }
