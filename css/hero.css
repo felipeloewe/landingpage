@@ -1,7 +1,8 @@
 /**
- * Approved composition:
- * Left 50% — Repositoria wordmark + 10 logos + H1 + support + 4 CTAs
- * Right 50% — full-bleed teal shelves panel (not an inset card)
+ * Approved composition (desktop):
+ * Left 50% — Repositoria + H1 + support + 4 CTAs; logos box UNDER CTAs
+ * Right 50% — full-bleed teal shelves panel
+ * Mobile — logos at bottom (unchanged intent)
  */
 .hero {
   display: grid;
@@ -19,7 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   padding: clamp(2rem, 6vh, 4rem) var(--page-gutter);
   background-color: var(--hero-wash-c);
   background-image:
@@ -35,11 +36,10 @@
   min-width: 0;
 }
 
-.hero__identity {
+.hero__copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.55rem;
   width: 100%;
   max-width: 100%;
 }
@@ -78,6 +78,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
+  width: fit-content;
+  max-width: 100%;
 }
 
 .hero__actions [hidden] {
@@ -157,44 +159,35 @@
   color: #fff;
 }
 
-/* Mobile: content first, logos at bottom 2×5, no right panel */
+/* Mobile: logos abajo in soft cuadro — keep bottom placement */
 @media (max-width: 960px) {
   .hero {
     min-height: auto;
   }
 
   .hero__content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
     padding-top: clamp(1.5rem, 4vh, 2.5rem);
   }
 
-  .hero__identity {
-    display: contents;
-  }
-
-  .hero__brand {
-    order: 1;
-  }
-
-  .hero__title {
-    order: 2;
-  }
-
-  .hero__support {
-    order: 3;
-  }
-
-  .hero__actions {
-    order: 4;
-  }
-
   .product-strip {
-    order: 5;
     width: 100%;
     margin-top: var(--space-xl);
     grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-template-rows: repeat(2, auto);
+  }
+
+  .product-strip__item {
+    width: 100%;
+    min-height: 2.75rem;
+  }
+
+  .product-strip__item img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .product-strip__label {
+    font-size: 0.5rem;
   }
 
   .hero__media {
@@ -202,7 +195,7 @@
   }
 }
 
-/* Desktop: exact 50 / 50 full-bleed */
+/* Desktop: exact 50 / 50; logos box under CTAs, justified toward bottom */
 @media (min-width: 961px) {
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -210,11 +203,47 @@
   }
 
   .hero__content {
+    min-height: 100svh;
     padding:
       clamp(2.5rem, 8vh, 5rem)
       clamp(1.5rem, 3vw, 2.75rem)
-      clamp(2.5rem, 8vh, 4rem)
+      clamp(1.5rem, 4vh, 2.5rem)
       var(--page-gutter);
+  }
+
+  /* Space above copy + between CTAs and logos + below logos */
+  .hero__copy {
+    margin-top: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .product-strip {
+    margin-top: auto;
+    margin-bottom: auto;
+    align-self: flex-start;
+    /* ~2× CTA row (JS sets exact px); fallback ≈ double a typical CTA row */
+    width: min(100%, calc(var(--cta-row-width, 26rem) * 2));
+    max-width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    justify-content: stretch;
+    justify-items: center;
+    gap: 0.55rem 0.75rem;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .product-strip__item {
+    width: 100%;
+  }
+
+  .product-strip__item img {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  .product-strip__label {
+    font-size: 0.52rem;
   }
 
   .hero__media {

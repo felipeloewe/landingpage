@@ -85,6 +85,35 @@
     });
   }
 
+  function sizeLogoBoxToCtas() {
+    var actions = document.querySelector(".hero__actions");
+    var strip = document.querySelector("[data-product-strip]");
+    var content = document.querySelector(".hero__content");
+    if (!actions || !strip || !content) return;
+    /* Desktop only — mobile keeps full-width bottom cuadro */
+    if (window.matchMedia("(max-width: 960px)").matches) {
+      strip.style.removeProperty("width");
+      strip.style.removeProperty("--cta-row-width");
+      return;
+    }
+    var ctaWidth = Math.round(actions.getBoundingClientRect().width);
+    var cs = window.getComputedStyle(content);
+    /* clientWidth includes padding — available child width does not */
+    var available = Math.round(
+      content.clientWidth -
+        (parseFloat(cs.paddingLeft) || 0) -
+        (parseFloat(cs.paddingRight) || 0)
+    );
+    if (ctaWidth <= 0 || available <= 0) return;
+    /* Prefer ~2× CTA row; cap to left column content width */
+    var target = Math.min(available, Math.round(ctaWidth * 2));
+    strip.style.setProperty("--cta-row-width", ctaWidth + "px");
+    strip.style.width = target + "px";
+  }
+
   document.querySelectorAll("[data-product-strip]").forEach(fillProductStrip);
   applyCtaFlags();
+  sizeLogoBoxToCtas();
+  window.addEventListener("load", sizeLogoBoxToCtas);
+  window.addEventListener("resize", sizeLogoBoxToCtas);
 })();
