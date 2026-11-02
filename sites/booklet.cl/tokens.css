@@ -1,0 +1,31 @@
+/**
+ * booklet.cl / Repositoria brand overlay.
+ * Deploy: copy to document-root `css/tokens.site.css` and uncomment the
+ * tokens.site.css link in index.html (or concatenate after tokens.css).
+ */
+:root {
+  --brand-name: "Repositoria";
+
+  /* Strong product blue + teal accent (aligned with app shell, not purple) */
+  --color-brand: #1259c8;
+  --color-brand-deep: #0b3f96;
+  --color-brand-soft: #e8f0fc;
+  --color-accent: #0f9d8a;
+  --color-accent-deep: #0b7a6b;
+
+  --color-ink: #101828;
+  --color-ink-muted: #475467;
+  --color-paper: #f5f8fc;
+  --color-paper-elevated: #ffffff;
+  --color-line: rgba(16, 24, 40, 0.12);
+
+  --hero-wash-a: #c9ddfb;
+  --hero-wash-b: #d7f3ee;
+  --hero-wash-c: #f5f8fc;
+  --hero-pattern: rgba(18, 89, 200, 0.07);
+  --hero-image-tint: rgba(11, 63, 150, 0.08);
+
+  --font-brand: "Syne", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+}

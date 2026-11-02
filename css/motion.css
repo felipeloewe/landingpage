@@ -1,0 +1,109 @@
+/**
+ * Intentional motion only — entrance, ambient drift, CTA feedback.
+ * Honors reduced-motion preferences.
+ */
+
+/* Only animate once JS is ready — keep copy visible without JS */
+.js-ready .hero__brand,
+.js-ready .hero__title,
+.js-ready .hero__support,
+.js-ready .hero__actions {
+  opacity: 0;
+  transform: translateY(1.1rem);
+  animation: rise-in var(--duration-slow) var(--ease-out) forwards;
+}
+
+.js-ready .hero__brand {
+  animation-delay: 60ms;
+}
+
+.js-ready .hero__title {
+  animation-delay: 160ms;
+}
+
+.js-ready .hero__support {
+  animation-delay: 280ms;
+}
+
+.js-ready .hero__actions {
+  animation-delay: 400ms;
+}
+
+@keyframes rise-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* No drift on hero media — right panel must stay full-bleed edge-aligned */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity var(--duration-med) var(--ease-out),
+    transform var(--duration-med) var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 48%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  transition: transform var(--duration-med) var(--ease-out);
+}
+
+.btn--primary:hover::after,
+.btn--primary:focus-visible::after {
+  transform: translateX(120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero__brand,
+  .hero__title,
+  .hero__support,
+  .hero__actions,
+  .js-ready .hero__brand,
+  .js-ready .hero__title,
+  .js-ready .hero__support,
+  .js-ready .hero__actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .js-ready .hero__media > * {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .btn--primary::after {
+    display: none;
+  }
+}

@@ -1,0 +1,59 @@
+/**
+ * Brand tokens — override these per domain (see sites/<domain>/tokens.css).
+ * Keep variable names stable so layouts stay reusable.
+ */
+:root {
+  /* Brand identity */
+  --brand-name: "Product";
+  --color-brand: #0e5a8a;
+  --color-brand-deep: #0a3d5c;
+  --color-brand-soft: #e8f3fa;
+  --color-accent: #1a9b8e;
+  --color-accent-deep: #127069;
+
+  /* Surfaces & text */
+  --color-ink: #14212b;
+  --color-ink-muted: #3d5160;
+  --color-paper: #f7fafc;
+  --color-paper-elevated: #ffffff;
+  --color-line: rgba(20, 33, 43, 0.12);
+
+  /* Atmosphere (hero / page wash) */
+  --hero-wash-a: #c5e4f5;
+  --hero-wash-b: #e8f7f4;
+  --hero-wash-c: #f7fafc;
+  --hero-pattern: rgba(14, 90, 138, 0.06);
+  --hero-image-tint: rgba(10, 61, 92, 0.08);
+
+  /* Typography */
+  --font-brand: "Syne", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+
+  --text-brand: clamp(1.75rem, 4vw, 2.75rem);
+  --text-hero: clamp(2.25rem, 6vw, 4.25rem);
+  --text-lead: clamp(1.05rem, 2vw, 1.25rem);
+  --text-body: 1.0625rem;
+  --text-section: clamp(1.75rem, 3.5vw, 2.5rem);
+
+  /* Spacing & rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6.5rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --content-max: 68rem;
+  --hero-min-height: min(100svh, 56rem);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-med: 520ms;
+  --duration-slow: 900ms;
+
+  /* Controls */
+  --radius-control: 0.5rem;
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
