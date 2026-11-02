@@ -26,7 +26,15 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
-      <a class="brand" href="/">Product</a>
+      <div class="site-header__brand-block">
+        <a class="brand" href="/">Product</a>
+        <!-- Sibling products: filled from js/config.js (LANDING_CONFIG.products) -->
+        <nav
+          class="product-strip"
+          data-product-strip
+          aria-label="Other products"
+        ></nav>
+      </div>
       <a class="header-cta" href="#get-started">Sign in</a>
     </header>
 
@@ -54,6 +62,18 @@
           <div class="hero__actions">
             <a class="btn btn--primary" href="#get-started">Get started</a>
             <a class="btn btn--ghost" href="#how">See how it works</a>
+            <a class="btn btn--ghost" data-cta="plans" href="#plans">Plans</a>
+            <!-- Hidden when LANDING_CONFIG.showFreeCta === false -->
+            <a
+              class="btn btn--accent"
+              data-cta="free"
+              href="#get-started"
+              >Start FREE</a
+            >
+            <!--
+              No free tier? Set showFreeCta: false in js/config.js,
+              or comment out the FREE button above.
+            -->
           </div>
         </div>
       </section>
@@ -79,17 +99,17 @@
               </p>
             </li>
             <li>
-              <h3>Hero budget</h3>
+              <h3>Product strip</h3>
               <p>
-                First viewport stays focused: brand, one headline, one support
-                line, one CTA group, one dominant image.
+                A reserved left strip under the logo lists sibling products from
+                config—each with a small mark and a max two-word label.
               </p>
             </li>
             <li>
               <h3>Static deploy</h3>
               <p>
-                Plain HTML and CSS. Optional vanilla JS for motion. Drop the
-                files into a cPanel document root and publish.
+                Plain HTML and CSS. Optional vanilla JS for motion and config.
+                Drop the files into a cPanel document root and publish.
               </p>
             </li>
           </ul>
@@ -101,7 +121,7 @@
           <p class="section__eyebrow">How it works</p>
           <h2 id="how-title" class="section__title">Three steps to go live.</h2>
           <p class="section__lead">
-            Clone the kit, override tokens for your domain, upload to hosting.
+            Clone the kit, override tokens and config for your domain, upload to hosting.
           </p>
           <ol class="steps">
             <li class="step">
@@ -111,8 +131,8 @@
             <li class="step">
               <h3>Customize</h3>
               <p>
-                Edit <code>css/tokens.css</code> or load a domain overlay from
-                <code>sites/</code>.
+                Edit <code>css/tokens.css</code> and <code>js/config.js</code>,
+                or load overlays from <code>sites/</code>.
               </p>
             </li>
             <li class="step">
@@ -120,6 +140,18 @@
               <p>Upload the site files to your domain’s document root.</p>
             </li>
           </ol>
+        </div>
+      </section>
+
+      <section class="section" id="plans" aria-labelledby="plans-title">
+        <div class="section__inner reveal">
+          <p class="section__eyebrow">Plans</p>
+          <h2 id="plans-title" class="section__title">Pick a plan that fits.</h2>
+          <p class="section__lead">
+            Replace this section with your pricing. Link the hero
+            <strong>Plans</strong> button here (or to an external pricing URL via
+            <code>plansHref</code> in config).
+          </p>
         </div>
       </section>
 
@@ -131,6 +163,13 @@
           </p>
           <div class="cta-band__actions">
             <a class="btn btn--primary" href="#get-started">Primary action</a>
+            <a class="btn btn--ghost" data-cta="plans" href="#plans">Plans</a>
+            <a
+              class="btn btn--accent"
+              data-cta="free"
+              href="#get-started"
+              >Start FREE</a
+            >
             <a class="btn btn--ghost" href="#what">Learn more</a>
           </div>
         </div>
@@ -144,6 +183,8 @@
       </div>
     </footer>
 
+    <script src="js/config.js"></script>
+    <script src="js/site.js" defer></script>
     <script src="js/motion.js" defer></script>
   </body>
 </html>

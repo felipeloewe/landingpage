@@ -1,6 +1,6 @@
 # Landing kit
 
-Reusable **static HTML/CSS** landing page for product pitches. Customize brand tokens and copy per domain; no Node build required. Optional vanilla JS powers a few motions only.
+Reusable **static HTML/CSS** landing page for product pitches. Customize brand tokens and copy per domain; no Node build required. Optional vanilla JS powers motion and site config (product strip + CTA flags).
 
 ## Quick start
 
@@ -32,8 +32,12 @@ Then visit `http://localhost:8080`.
 │   ├── hero.css
 │   └── motion.css
 ├── js/
-│   └── motion.js           # Optional entrance / scroll reveals
-├── assets/hero/            # Dominant hero visual
+│   ├── config.js           # Products strip + Plans / FREE flags
+│   ├── site.js             # Applies config to the DOM
+│   └── motion.js           # Entrance / scroll reveals
+├── assets/
+│   ├── hero/               # Dominant hero visual
+│   └── products/           # Small marks for the product strip
 └── sites/
     └── booklet.cl/         # Example domain overlay (Repositoria)
 ```
@@ -49,10 +53,30 @@ All brandable values live in `css/tokens.css` as CSS variables:
 **Per-domain overlay**
 
 1. Copy `sites/<domain>/tokens.css` → `css/tokens.site.css`
-2. Uncomment the `tokens.site.css` link in `index.html` (booklet’s page already includes it)
-3. Replace headlines, support line, and CTA URLs in the HTML
+2. Copy `sites/<domain>/config.js` → `js/config.js`
+3. Uncomment the `tokens.site.css` link in `index.html` (booklet’s page already includes it)
+4. Replace headlines, support line, and CTA URLs in the HTML
 
 See [`sites/booklet.cl/README.md`](sites/booklet.cl/README.md) for a full Repositoria / booklet.cl example (CTA → [repositoria.booklet.cl](https://repositoria.booklet.cl/)).
+
+## Site config (`js/config.js`)
+
+```js
+window.LANDING_CONFIG = {
+  showFreeCta: true,          // false → hide FREE buttons
+  freeCtaHref: "#get-started",
+  freeCtaLabel: "Start FREE",
+  plansHref: "#plans",
+  plansLabel: "Plans",
+  products: [                 // left strip under the logo
+    { label: "Shop Kit", href: "/shop/", logo: "assets/products/mark-shop.svg" },
+    // label: max two words
+  ],
+};
+```
+
+- **Product strip:** reserved under the top logo; each item is a small mark + uppercase label; click goes to that product’s landing.
+- **Planes / Plans** and **Inicia FREE / Start FREE** sit with the hero CTA group. If the product has no free tier, set `showFreeCta: false` (or comment out the FREE button in HTML).
 
 ## Design constraints (kit defaults)
 
@@ -67,12 +91,12 @@ See [`sites/booklet.cl/README.md`](sites/booklet.cl/README.md) for a full Reposi
 1. Prepare files to upload:
    - `index.html` (generic or a `sites/<domain>/` variant)
    - `css/` (include `tokens.site.css` if you use an overlay)
-   - `js/motion.js`
+   - `js/config.js`, `js/site.js`, `js/motion.js`
    - `assets/`
 2. In cPanel → **Domains** → select the domain → note the **document root** path (for example `public_html` or `public_html/booklet.cl`).
 3. Upload the files **into** that document root so `index.html` is reachable at `/`.
 4. Do not nest an extra folder unless the domain’s document root points at it.
-5. Open the domain in a browser and verify CTAs.
+5. Open the domain in a browser and verify CTAs and the product strip.
 
 No build, no `npm install`. If the host serves from a subdirectory, adjust relative asset paths or set the document root to the kit folder.
 
@@ -80,11 +104,12 @@ No build, no `npm install`. If the host serves from a subdirectory, adjust relat
 
 ```bash
 cp sites/booklet.cl/tokens.css css/tokens.site.css
+cp sites/booklet.cl/config.js js/config.js
 cp sites/booklet.cl/index.html index.html
 # upload css/ js/ assets/ index.html to booklet.cl document root
 ```
 
-Primary CTA targets `https://repositoria.booklet.cl/`.
+Primary CTA targets `https://repositoria.booklet.cl/`. Overlay seeds example strip items **ECOMMERCE** and **ERP**.
 
 ## Browser support
 

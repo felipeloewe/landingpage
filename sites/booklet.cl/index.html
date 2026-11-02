@@ -26,7 +26,15 @@
     <a class="skip-link" href="#main">Saltar al contenido</a>
 
     <header class="site-header">
-      <a class="brand" href="/">Repositoria</a>
+      <div class="site-header__brand-block">
+        <a class="brand" href="/">Repositoria</a>
+        <!-- Sibling products from js/config.js (booklet overlay seeds ECOMMERCE, ERP) -->
+        <nav
+          class="product-strip"
+          data-product-strip
+          aria-label="Otros productos"
+        ></nav>
+      </div>
       <a class="header-cta" href="https://repositoria.booklet.cl/">Ingresar</a>
     </header>
 
@@ -55,9 +63,20 @@
             <a
               class="btn btn--primary"
               href="https://repositoria.booklet.cl/"
-              >Ingresar a Repositoria</a
+              >Ingresar</a
             >
             <a class="btn btn--ghost" href="#como">Cómo funciona</a>
+            <a class="btn btn--ghost" data-cta="plans" href="#planes">Planes</a>
+            <a
+              class="btn btn--accent"
+              data-cta="free"
+              href="https://repositoria.booklet.cl/"
+              >Inicia FREE</a
+            >
+            <!--
+              Sin plan gratis: showFreeCta: false en js/config.js,
+              o comenta el botón FREE de arriba.
+            -->
           </div>
         </div>
       </section>
@@ -132,18 +151,36 @@
         </div>
       </section>
 
+      <section class="section" id="planes" aria-labelledby="planes-title">
+        <div class="section__inner reveal">
+          <p class="section__eyebrow">Planes</p>
+          <h2 id="planes-title" class="section__title">Empieza gratis o escala.</h2>
+          <p class="section__lead">
+            Filial pequeña (b): gratis hasta 3 usuarios y 10&nbsp;GB. Multiempresa
+            (a): plan de pago. Detalle comercial se define en Admin central.
+          </p>
+        </div>
+      </section>
+
       <section class="cta-band" id="ingresar" aria-labelledby="cta-title">
         <div class="cta-band__inner reveal">
           <h2 id="cta-title">Empieza en Repositoria.</h2>
           <p>
             Abre la aplicación e inicia sesión. Si aún no tienes acceso, pide
-            invitación a tu administrador.
+            invitación a tu administrador—o inicia en el plan FREE.
           </p>
           <div class="cta-band__actions">
             <a
               class="btn btn--primary"
               href="https://repositoria.booklet.cl/"
-              >Ir al login</a
+              >Ingresar</a
+            >
+            <a class="btn btn--ghost" data-cta="plans" href="#planes">Planes</a>
+            <a
+              class="btn btn--accent"
+              data-cta="free"
+              href="https://repositoria.booklet.cl/"
+              >Inicia FREE</a
             >
             <a class="btn btn--ghost" href="#que">Más sobre el producto</a>
           </div>
@@ -158,6 +195,9 @@
       </div>
     </footer>
 
+    <!-- Deploy: copy sites/booklet.cl/config.js → js/config.js -->
+    <script src="js/config.js"></script>
+    <script src="js/site.js" defer></script>
     <script src="js/motion.js" defer></script>
   </body>
 </html>
