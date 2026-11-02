@@ -31,7 +31,7 @@ Open `index.html` in a browser (or any static server). The booklet page already 
 
 - **Product strip:** `ECOMMERCE`, `ERP` (placeholder hrefs — point each at that product’s landing)
 - **`showFreeCta: true`** — filial (b) free tier; set `false` to hide **Inicia FREE**
-- **Planes** → `#planes`; FREE / Ingresar → `https://repositoria.booklet.cl/`
+- **Planes** → `#planes`; **Inicia FREE** → `https://repositoria.booklet.cl/registro`; **Ingresar** → `https://repositoria.booklet.cl/login`
 
 ## Deploy to cPanel (booklet.cl document root)
 
@@ -51,7 +51,7 @@ No Node build step.
 ## Copy checklist (edit before launch)
 
 - [ ] Hero brand, headline, and support line
-- [ ] Primary CTA URL (`https://repositoria.booklet.cl/`)
+- [ ] Ingresar → `https://repositoria.booklet.cl/login`; Inicia FREE → `https://repositoria.booklet.cl/registro`
 - [ ] `products[]` labels (max 2 words) and landing hrefs
 - [ ] `showFreeCta` matches the commercial plan
 - [ ] “Qué es” / “Cómo funciona” / “Planes” sections

@@ -4,7 +4,7 @@
  */
 window.LANDING_CONFIG = {
   showFreeCta: true,
-  freeCtaHref: "https://repositoria.booklet.cl/",
+  freeCtaHref: "https://repositoria.booklet.cl/registro",
   freeCtaLabel: "Inicia FREE",
   plansHref: "#planes",
   plansLabel: "Planes",
