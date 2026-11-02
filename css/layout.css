@@ -1,13 +1,6 @@
+/* Top nav removed from approved hero composition — keep rule inert */
 .site-header {
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  padding: var(--space-md) var(--page-gutter);
-  pointer-events: none;
+  display: none !important;
 }
 
 .site-header a,
@@ -58,7 +51,7 @@
   display: grid;
   grid-template-columns: repeat(5, max-content);
   grid-template-rows: repeat(2, auto);
-  justify-content: center;
+  justify-content: start;
   justify-items: center;
   gap: 0.3rem 0.4rem;
   margin: 0;

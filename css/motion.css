@@ -36,19 +36,7 @@
   }
 }
 
-.js-ready .hero__media > * {
-  animation: media-drift 14s var(--ease-out) infinite alternate;
-  will-change: transform;
-}
-
-@keyframes media-drift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(-1.5%, 1.25%, 0) scale(1.03);
-  }
-}
+/* No drift on hero media — right panel must stay full-bleed edge-aligned */
 
 .reveal {
   opacity: 0;
