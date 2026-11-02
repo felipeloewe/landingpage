@@ -75,7 +75,7 @@ window.LANDING_CONFIG = {
 };
 ```
 
-- **Product strip:** reserved under the top logo; each item is a small mark + uppercase label; click goes to that product’s landing.
+- **Product strip:** 7 slots stacked under the brand (centered to the wordmark on desktop); phone/tablet moves them to a bottom 2×4 grid.
 - **Planes / Plans** and **Inicia FREE / Start FREE** sit with the hero CTA group. If the product has no free tier, set `showFreeCta: false` (or comment out the FREE button in HTML).
 
 ## Design constraints (kit defaults)

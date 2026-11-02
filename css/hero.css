@@ -1,6 +1,6 @@
 /**
- * First viewport = one composition: brand, headline, support line,
- * CTA group, and one full-bleed dominant visual. No cards or overlays.
+ * First viewport: brand, logos centered under brand, copy near original
+ * left position, portrait hero visual on the right.
  */
 .hero {
   position: relative;
@@ -17,8 +17,8 @@
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 90% 70% at 70% 20%, var(--hero-wash-a), transparent 60%),
-    radial-gradient(ellipse 70% 55% at 15% 75%, var(--hero-wash-b), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 78% 18%, var(--hero-wash-a), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 12% 80%, var(--hero-wash-b), transparent 55%),
     linear-gradient(165deg, #eef6fb 0%, var(--hero-wash-c) 45%, #e4f0f5 100%);
 }
 
@@ -31,7 +31,7 @@
     linear-gradient(var(--hero-pattern) 1px, transparent 1px),
     linear-gradient(90deg, var(--hero-pattern) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 65% at 72% 40%, #000 15%, transparent 72%);
 }
 
 .hero__media {
@@ -43,21 +43,33 @@
   pointer-events: none;
 }
 
-.hero__media img,
-.hero__media svg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 70% center;
+.hero__media-frame {
+  display: none;
 }
 
 .hero__content {
+  position: relative;
+  z-index: 1;
   width: min(100%, var(--content-max));
   margin-inline: auto;
   padding:
-    calc(var(--space-2xl) + 4.5rem)
+    calc(var(--space-2xl) + 3rem)
     var(--page-gutter)
     var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 40rem;
+}
+
+/* Brand + vertical logos centered under the brand word */
+.hero__identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  gap: 0.75rem;
 }
 
 .hero__brand {
@@ -67,6 +79,11 @@
   letter-spacing: -0.04em;
   line-height: 1;
   color: var(--color-brand-deep);
+  text-align: center;
+}
+
+.hero__identity .product-strip {
+  width: 8.25rem;
 }
 
 .hero__title {
@@ -169,34 +186,98 @@
   color: var(--color-brand);
 }
 
-@media (max-width: 720px) {
-  .hero__media img,
-  .hero__media svg {
-    object-position: 62% 30%;
-    opacity: 0.55;
+/* Phone + tablet: logos at bottom as max 2 rows × 4 columns */
+@media (max-width: 960px) {
+  .hero__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    max-width: none;
+    padding-top: calc(var(--space-2xl) + 3.25rem);
+    padding-bottom: var(--space-lg);
   }
 
-  .hero__content {
-    padding-top: calc(var(--space-2xl) + 5.5rem);
+  .hero__identity {
+    display: contents;
+  }
+
+  .hero__brand {
+    order: 1;
+    text-align: left;
+    width: fit-content;
+  }
+
+  .hero__title {
+    order: 2;
+  }
+
+  .hero__support {
+    order: 3;
+  }
+
+  .hero__actions {
+    order: 4;
+  }
+
+  .hero__identity .product-strip,
+  .product-strip[data-product-strip] {
+    order: 5;
+    width: 100%;
+    margin-top: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
+    gap: 0.45rem;
+  }
+
+  .product-strip__item {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 3.2rem;
+    padding: 0.35rem 0.2rem;
+    gap: 0.25rem;
+  }
+
+  .product-strip__label {
+    text-align: center;
+  }
+
+  .hero__media img,
+  .hero__media svg {
+    opacity: 0.38;
+    object-position: 90% 15%;
   }
 }
 
-@media (min-width: 721px) {
+/* Desktop: original-ish left copy; portrait image on the right */
+@media (min-width: 961px) {
   .hero__content {
-    padding-bottom: var(--space-2xl);
-    max-width: 42rem;
     margin-left: var(--page-gutter);
     margin-right: auto;
+    padding-bottom: var(--space-2xl);
+    width: min(100%, 40rem);
   }
 
   .hero__media {
-    left: 38%;
+    inset: auto;
+    top: 5rem;
+    right: max(1.5rem, 5vw);
+    bottom: 2rem;
+    left: auto;
+    width: min(24vw, 18rem);
+    height: min(72svh, 36rem);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 1.25rem;
   }
 
   .hero__media img,
   .hero__media svg {
-    object-fit: contain;
-    object-position: right center;
-    padding: 4rem 2rem 2rem 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 }

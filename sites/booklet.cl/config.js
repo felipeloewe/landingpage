@@ -1,9 +1,6 @@
 /**
- * booklet.cl overlay config — Repositoria + example sibling products.
- * Deploy: copy to document-root `js/config.js` (replaces the generic config).
- *
- * Free tier: tipo (b) filial small plan is free → showFreeCta: true.
- * Set showFreeCta: false (or comment the FREE button in HTML) if a product has no free tier.
+ * booklet.cl overlay — 7 vertical product slots (ECOMMERCE, ERP + placeholders).
+ * Deploy: copy to document-root `js/config.js`.
  */
 window.LANDING_CONFIG = {
   showFreeCta: true,
@@ -12,15 +9,12 @@ window.LANDING_CONFIG = {
   plansHref: "#planes",
   plansLabel: "Planes",
   products: [
-    {
-      label: "ECOMMERCE",
-      href: "#producto-ecommerce",
-      logo: "assets/products/mark-shop.svg",
-    },
-    {
-      label: "ERP",
-      href: "#producto-erp",
-      logo: "assets/products/mark-ops.svg",
-    },
+    { label: "ECOMMERCE", href: "#producto-ecommerce", logo: "assets/products/mark-1.svg" },
+    { label: "ERP", href: "#producto-erp", logo: "assets/products/mark-2.svg" },
+    { label: "CRM", href: "#producto-crm", logo: "assets/products/mark-3.svg" },
+    { label: "HR", href: "#producto-hr", logo: "assets/products/mark-4.svg" },
+    { label: "Finance", href: "#producto-finance", logo: "assets/products/mark-5.svg" },
+    { label: "Mail", href: "#producto-mail", logo: "assets/products/mark-6.svg" },
+    { label: "Portal", href: "#producto-portal", logo: "assets/products/mark-7.svg" },
   ],
 };

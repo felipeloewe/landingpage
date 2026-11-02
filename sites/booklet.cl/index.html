@@ -14,7 +14,6 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- Paths assume this file is copied to the kit document root. -->
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/tokens.site.css" />
     <link rel="stylesheet" href="css/base.css" />
@@ -28,12 +27,6 @@
     <header class="site-header">
       <div class="site-header__brand-block">
         <a class="brand" href="/">Repositoria</a>
-        <!-- Sibling products from js/config.js (booklet overlay seeds ECOMMERCE, ERP) -->
-        <nav
-          class="product-strip"
-          data-product-strip
-          aria-label="Otros productos"
-        ></nav>
       </div>
       <a class="header-cta" href="https://repositoria.booklet.cl/">Ingresar</a>
     </header>
@@ -45,13 +38,51 @@
           <img
             src="assets/hero/product-scene.svg"
             alt=""
-            width="960"
+            width="540"
             height="720"
             decoding="async"
           />
         </div>
+
         <div class="hero__content">
-          <p class="hero__brand">Repositoria</p>
+          <div class="hero__identity">
+            <p class="hero__brand">Repositoria</p>
+            <nav
+              class="product-strip"
+              data-product-strip
+              aria-label="Otros productos"
+            >
+              <a class="product-strip__item" href="#producto-ecommerce" title="ECOMMERCE">
+                <img src="assets/products/mark-1.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">ECOMMERCE</span>
+              </a>
+              <a class="product-strip__item" href="#producto-erp" title="ERP">
+                <img src="assets/products/mark-2.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">ERP</span>
+              </a>
+              <a class="product-strip__item" href="#producto-crm" title="CRM">
+                <img src="assets/products/mark-3.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">CRM</span>
+              </a>
+              <a class="product-strip__item" href="#producto-hr" title="HR">
+                <img src="assets/products/mark-4.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">HR</span>
+              </a>
+              <a class="product-strip__item" href="#producto-finance" title="Finance">
+                <img src="assets/products/mark-5.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">Finance</span>
+              </a>
+              <a class="product-strip__item" href="#producto-mail" title="Mail">
+                <img src="assets/products/mark-6.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">Mail</span>
+              </a>
+              <a class="product-strip__item" href="#producto-portal" title="Portal">
+                <img src="assets/products/mark-7.svg" alt="" width="32" height="32" decoding="async" />
+                <span class="product-strip__label">Portal</span>
+              </a>
+            </nav>
+          </div>
+
           <h1 id="hero-heading" class="hero__title">
             El repositorio de tu empresa, en orden.
           </h1>
@@ -60,23 +91,10 @@
             roles claros por empresa, departamento y sucursal.
           </p>
           <div class="hero__actions">
-            <a
-              class="btn btn--primary"
-              href="https://repositoria.booklet.cl/"
-              >Ingresar</a
-            >
+            <a class="btn btn--primary" href="https://repositoria.booklet.cl/">Ingresar</a>
             <a class="btn btn--ghost" href="#como">Cómo funciona</a>
             <a class="btn btn--ghost" data-cta="plans" href="#planes">Planes</a>
-            <a
-              class="btn btn--accent"
-              data-cta="free"
-              href="https://repositoria.booklet.cl/"
-              >Inicia FREE</a
-            >
-            <!--
-              Sin plan gratis: showFreeCta: false en js/config.js,
-              o comenta el botón FREE de arriba.
-            -->
+            <a class="btn btn--accent" data-cta="free" href="https://repositoria.booklet.cl/">Inicia FREE</a>
           </div>
         </div>
       </section>
@@ -85,36 +103,24 @@
         <div class="section__inner">
           <div class="reveal">
             <p class="section__eyebrow">Qué es</p>
-            <h2 id="que-title" class="section__title">
-              Intranet documental multi-empresa.
-            </h2>
+            <h2 id="que-title" class="section__title">Intranet documental multi-empresa.</h2>
             <p class="section__lead">
               Repositoria centraliza la vida documental de tu organización:
-              jerarquía clara, acceso por membresía real y canales seguros para
-              terceros.
+              jerarquía clara, acceso por membresía real y canales seguros para terceros.
             </p>
           </div>
           <ul class="feature-list reveal">
             <li>
               <h3>Organización</h3>
-              <p>
-                Empresa → departamentos → sucursales. Cada usuario entra con el
-                perfil de su membresía, sin atajos confusos.
-              </p>
+              <p>Empresa → departamentos → sucursales. Cada usuario entra con el perfil de su membresía.</p>
             </li>
             <li>
               <h3>Repositorio</h3>
-              <p>
-                Un archivo vivo por empresa: documentos ligados a departamentos,
-                con historial y alcance por rol.
-              </p>
+              <p>Un archivo vivo por empresa: documentos ligados a departamentos, con historial y alcance por rol.</p>
             </li>
             <li>
               <h3>Correo y flujos</h3>
-              <p>
-                Adjuntos y certificados desde el correo al repo; fiscalización y
-                paquetes para contador, abogado o prevencionista.
-              </p>
+              <p>Adjuntos y certificados desde el correo al repo; fiscalización y paquetes para terceros.</p>
             </li>
           </ul>
         </div>
@@ -124,28 +130,19 @@
         <div class="section__inner reveal">
           <p class="section__eyebrow">Cómo funciona</p>
           <h2 id="como-title" class="section__title">De la casilla al expediente.</h2>
-          <p class="section__lead">
-            Tres movimientos que mantienen el archivo al día sin fricción.
-          </p>
+          <p class="section__lead">Tres movimientos que mantienen el archivo al día sin fricción.</p>
           <ol class="steps">
             <li class="step">
               <h3>Entra</h3>
-              <p>
-                Accede con tu cuenta en
-                <a href="https://repositoria.booklet.cl/">repositoria.booklet.cl</a>.
-              </p>
+              <p>Accede en <a href="https://repositoria.booklet.cl/">repositoria.booklet.cl</a>.</p>
             </li>
             <li class="step">
               <h3>Organiza</h3>
-              <p>
-                Sube y clasifica documentos por departamento, actividad y tema.
-              </p>
+              <p>Sube y clasifica documentos por departamento, actividad y tema.</p>
             </li>
             <li class="step">
               <h3>Comparte con control</h3>
-              <p>
-                Aprueba envíos y abre canales acotados para roles externos.
-              </p>
+              <p>Aprueba envíos y abre canales acotados para roles externos.</p>
             </li>
           </ol>
         </div>
@@ -156,8 +153,7 @@
           <p class="section__eyebrow">Planes</p>
           <h2 id="planes-title" class="section__title">Empieza gratis o escala.</h2>
           <p class="section__lead">
-            Filial pequeña (b): gratis hasta 3 usuarios y 10&nbsp;GB. Multiempresa
-            (a): plan de pago. Detalle comercial se define en Admin central.
+            Filial pequeña (b): gratis hasta 3 usuarios y 10&nbsp;GB. Multiempresa (a): plan de pago.
           </p>
         </div>
       </section>
@@ -165,24 +161,11 @@
       <section class="cta-band" id="ingresar" aria-labelledby="cta-title">
         <div class="cta-band__inner reveal">
           <h2 id="cta-title">Empieza en Repositoria.</h2>
-          <p>
-            Abre la aplicación e inicia sesión. Si aún no tienes acceso, pide
-            invitación a tu administrador—o inicia en el plan FREE.
-          </p>
+          <p>Abre la aplicación e inicia sesión—o inicia en el plan FREE.</p>
           <div class="cta-band__actions">
-            <a
-              class="btn btn--primary"
-              href="https://repositoria.booklet.cl/"
-              >Ingresar</a
-            >
+            <a class="btn btn--primary" href="https://repositoria.booklet.cl/">Ingresar</a>
             <a class="btn btn--ghost" data-cta="plans" href="#planes">Planes</a>
-            <a
-              class="btn btn--accent"
-              data-cta="free"
-              href="https://repositoria.booklet.cl/"
-              >Inicia FREE</a
-            >
-            <a class="btn btn--ghost" href="#que">Más sobre el producto</a>
+            <a class="btn btn--accent" data-cta="free" href="https://repositoria.booklet.cl/">Inicia FREE</a>
           </div>
         </div>
       </section>
@@ -195,7 +178,6 @@
       </div>
     </footer>
 
-    <!-- Deploy: copy sites/booklet.cl/config.js → js/config.js -->
     <script src="js/config.js"></script>
     <script src="js/site.js" defer></script>
     <script src="js/motion.js" defer></script>

@@ -1,9 +1,6 @@
 /**
  * Site config — override per domain (see sites/<domain>/config.js).
- * Keep the kit core product-agnostic; overlays seed products and CTA flags.
- *
- * products[].label: max two words (shown uppercase in the strip)
- * showFreeCta: false hides / disables the FREE button when the product has no free tier
+ * products: 7 slots typical. label: max two words. showFreeCta: false hides FREE.
  */
 window.LANDING_CONFIG = {
   showFreeCta: true,
@@ -12,15 +9,12 @@ window.LANDING_CONFIG = {
   plansHref: "#plans",
   plansLabel: "Plans",
   products: [
-    {
-      label: "Shop Kit",
-      href: "#product-shop",
-      logo: "assets/products/mark-shop.svg",
-    },
-    {
-      label: "Ops Hub",
-      href: "#product-ops",
-      logo: "assets/products/mark-ops.svg",
-    },
+    { label: "Shop Kit", href: "#product-1", logo: "assets/products/mark-1.svg" },
+    { label: "Ops Hub", href: "#product-2", logo: "assets/products/mark-2.svg" },
+    { label: "CRM Lite", href: "#product-3", logo: "assets/products/mark-3.svg" },
+    { label: "HR Desk", href: "#product-4", logo: "assets/products/mark-4.svg" },
+    { label: "Finance", href: "#product-5", logo: "assets/products/mark-5.svg" },
+    { label: "Mail Hub", href: "#product-6", logo: "assets/products/mark-6.svg" },
+    { label: "Portal", href: "#product-7", logo: "assets/products/mark-7.svg" },
   ],
 };

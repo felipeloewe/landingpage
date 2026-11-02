@@ -3,18 +3,13 @@
  * Honors reduced-motion preferences.
  */
 
-.hero__brand,
-.hero__title,
-.hero__support,
-.hero__actions {
-  opacity: 0;
-  transform: translateY(1.1rem);
-}
-
+/* Only animate once JS is ready — keep copy visible without JS */
 .js-ready .hero__brand,
 .js-ready .hero__title,
 .js-ready .hero__support,
 .js-ready .hero__actions {
+  opacity: 0;
+  transform: translateY(1.1rem);
   animation: rise-in var(--duration-slow) var(--ease-out) forwards;
 }
 
