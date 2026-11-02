@@ -68,6 +68,12 @@
   flex-direction: column;
   align-items: flex-start;
   min-width: 0; /* allow wrapping inside grid track */
+  overflow-x: clip;
+}
+
+.hero__content > * {
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* Brand + 10 logos under wordmark (left column) */
