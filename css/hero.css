@@ -1,6 +1,6 @@
 /**
- * First viewport: brand, logos centered under brand, copy near original
- * left position, portrait hero visual on the right.
+ * Cleaner hero: left brand wordmark → compact 10 logos centered under it →
+ * headline / copy / CTAs with breathing room; portrait image on the right.
  */
 .hero {
   position: relative;
@@ -17,8 +17,8 @@
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 90% 70% at 78% 18%, var(--hero-wash-a), transparent 55%),
-    radial-gradient(ellipse 70% 55% at 12% 80%, var(--hero-wash-b), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 70% 20%, var(--hero-wash-a), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 15% 75%, var(--hero-wash-b), transparent 55%),
     linear-gradient(165deg, #eef6fb 0%, var(--hero-wash-c) 45%, #e4f0f5 100%);
 }
 
@@ -31,7 +31,7 @@
     linear-gradient(var(--hero-pattern) 1px, transparent 1px),
     linear-gradient(90deg, var(--hero-pattern) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 65% at 72% 40%, #000 15%, transparent 72%);
+  mask-image: radial-gradient(ellipse 80% 70% at 65% 40%, #000 20%, transparent 75%);
 }
 
 .hero__media {
@@ -43,8 +43,12 @@
   pointer-events: none;
 }
 
-.hero__media-frame {
-  display: none;
+.hero__media img,
+.hero__media svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
 }
 
 .hero__content {
@@ -53,23 +57,23 @@
   width: min(100%, var(--content-max));
   margin-inline: auto;
   padding:
-    calc(var(--space-2xl) + 3rem)
+    calc(var(--space-2xl) + 2.5rem)
     var(--page-gutter)
     var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 40rem;
 }
 
-/* Brand + vertical logos centered under the brand word */
+/* LEFT brand block: wordmark + logos centered under that word */
 .hero__identity {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: flex-start;
   width: fit-content;
   max-width: 100%;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .hero__brand {
@@ -80,10 +84,6 @@
   line-height: 1;
   color: var(--color-brand-deep);
   text-align: center;
-}
-
-.hero__identity .product-strip {
-  width: 8.25rem;
 }
 
 .hero__title {
@@ -186,15 +186,13 @@
   color: var(--color-brand);
 }
 
-/* Phone + tablet: logos at bottom as max 2 rows × 4 columns */
+/* Phone + tablet: logos at bottom as 2×5 */
 @media (max-width: 960px) {
   .hero__content {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    max-width: none;
-    padding-top: calc(var(--space-2xl) + 3.25rem);
-    padding-bottom: var(--space-lg);
+    padding-top: calc(var(--space-2xl) + 3rem);
   }
 
   .hero__identity {
@@ -224,60 +222,65 @@
     order: 5;
     width: 100%;
     margin-top: var(--space-xl);
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-template-rows: repeat(2, auto);
     gap: 0.45rem;
+    padding: 0.45rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-control);
+    background: color-mix(in srgb, var(--color-paper-elevated) 92%, var(--color-brand-soft));
   }
 
   .product-strip__item {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 3.2rem;
-    padding: 0.35rem 0.2rem;
-    gap: 0.25rem;
+    width: 100%;
+    min-height: 2.75rem;
+  }
+
+  .product-strip__item img {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .product-strip__label {
-    text-align: center;
+    font-size: 0.5rem;
   }
 
   .hero__media img,
   .hero__media svg {
-    opacity: 0.38;
-    object-position: 90% 15%;
+    opacity: 0.4;
+    object-position: 85% 20%;
   }
 }
 
-/* Desktop: original-ish left copy; portrait image on the right */
+/* Desktop: left 50% copy; hero visual right 50% (from mid-page), no text overlap */
 @media (min-width: 961px) {
   .hero__content {
-    margin-left: var(--page-gutter);
+    box-sizing: border-box;
+    width: 50%;
+    max-width: 50%;
+    margin-left: 0;
     margin-right: auto;
+    padding-left: var(--page-gutter);
+    padding-right: var(--space-md);
     padding-bottom: var(--space-2xl);
-    width: min(100%, 40rem);
   }
 
   .hero__media {
-    inset: auto;
-    top: 5rem;
-    right: max(1.5rem, 5vw);
-    bottom: 2rem;
-    left: auto;
-    width: min(24vw, 18rem);
-    height: min(72svh, 36rem);
+    inset: 0 0 0 50%;
+    width: 50%;
     display: grid;
     place-items: center;
-    overflow: hidden;
-    border-radius: 1.25rem;
+    padding: 4rem var(--page-gutter) 2rem;
   }
 
   .hero__media img,
   .hero__media svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    aspect-ratio: 3 / 4;
   }
 }
